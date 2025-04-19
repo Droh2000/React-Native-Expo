@@ -22,6 +22,12 @@ export default function App() {
         position='right'
       />
 
+      <FAB 
+        label="Reset"
+        onPress={ () => setCount(0)}
+        position='left'
+      />
+
       {/* Este es otro tipo de boton que al precionarlo nos da un efecto de opacidad, pero el de arriba es mas felxible 
       <TouchableOpacity>
         <Text>+1</Text>

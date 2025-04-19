@@ -19,7 +19,14 @@ export default function FAB({
     /* Este componente es como el Button, todo el contenido siempre que estara dentro del componente Text */
     return (
     <Pressable
-        style={[ styles.floatingButton, position === 'right' ? styles.possitionRight : styles.possitionLeft ]}
+        // Agregarle opaciodad al boton cuando se preciona, dentro de los styles al ponerle una funcion podemos desestructurar el objeto que detecta el click
+        style={
+            ({ pressed }) => [ 
+                styles.floatingButton, 
+                position === 'right' ? styles.possitionRight : styles.possitionLeft,
+                pressed ? { opacity: 0.7 } : { opacity: 1 }
+            ]
+        }
         // Evento click
         onPress={ onPress }
         // Cuando dejamos precionado el boton por mucho tiempo
