@@ -2,27 +2,25 @@
 import { StatusBar } from 'expo-status-bar';
 import { Pressable, StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native';
 import { useState } from 'react';
+import FAB from './components/FAB';
 
 export default function App() {
 
   // Uso de componentes de React
   const [count, setCount] = useState(10);
 
+  // El uso es como utilizar etiquetas HTML pero ahora con otro nombre
   return (
-    // El uso es como utilizar etiquetas HTML pero ahora con otro nombre
     <View style={styles.container}> {/* Esto es como un DIV en HTML, si queremos mas estilos ponemos todo eso entre [] separados por coma */} 
       <Text style={styles.textHuge}>{ count }</Text> {/* Esto es como un SPAN */}
 
-      {/* Este componente es como el Button, todo el contenido siempre que estara dentro del componente Text */}
-      <Pressable
-        style={ styles.floatingButton }
-        // Evento click
-        onPress={() => setCount(count + 1)}
-        // Cuando dejamos precionado el boton por mucho tiempo
-        onLongPress={() => setCount(0)}
-      >
-        <Text style={{ color: 'white', fontSize: 20 }}>+1</Text>
-      </Pressable>
+      {/* Separamos la logica en componentes para ser reutilizables */}
+      <FAB 
+        label="+1"
+        onPress={ () => setCount(count + 1)}
+        onLongPress={ () => setCount(0) }
+        position='right'
+      />
 
       {/* Este es otro tipo de boton que al precionarlo nos da un efecto de opacidad, pero el de arriba es mas felxible 
       <TouchableOpacity>
@@ -49,17 +47,4 @@ const styles = StyleSheet.create({
     fontSize: 120,
     fontWeight: '100',
   },
-  floatingButton: {
-    position: 'absolute',
-    bottom: 20,
-    right: 20,
-    backgroundColor: '#000',
-    padding: 20,
-    borderRadius: 15,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    elevation: 3,
-    shadowRadius: 4,
-  }
 });

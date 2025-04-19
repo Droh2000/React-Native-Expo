@@ -3,5 +3,20 @@ Para crear el proyecto:
 
         - Hay diferentes templates para iniciar con un codigo base u otro
 
+Para ejecutar el proyecto es:
+    * npm run dev
 
+Para abrir el emulador del celular
+    * a
 
+Si vemos que no nos refleja los cambios precionamos
+    * r
+
+Si se queda trabado en el circulo de cargando, se cierra todo en el celular y se preciona
+    * a
+
+Si no ejecuta la applicacion en la App de Expo go del celular ejecutar
+    * npx expo start --tunnel
+
+El Sniper aqui es:
+    * rnf + tab
