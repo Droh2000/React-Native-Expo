@@ -1,0 +1,7 @@
+Para crear el proyecto:
+    * npx create-expo-app@latest NombreDeLaApp --template blank-typescript
+
+        - Hay diferentes templates para iniciar con un codigo base u otro
+
+
+
