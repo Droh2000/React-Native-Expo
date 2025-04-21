@@ -1,0 +1,24 @@
+En este caso ejecutamos el comando que viene por defecto
+    - npx create-expo-app@latest 
+Esto nos crea una aplicacion por defecto en expo, anteriormente vimos que teniamos la bandera de --template
+pero cuando nosotros creamos la aplicacion con el comando por defecto, esto automaticamente nos va a incluir el router
+que es muy probable que lo utilizemos, ademas de otras cosas principales que requerimos  
+
+Para ejecutar el proyecto:
+    - npm start (Igual este nunca funciona, es mejor con el de tunel)
+
+En este caso por como creamos el proyecto, tambien podemos abrir el proyecto desde el navegador
+precionando la tecla: w
+
+Este proyecto por defecto nos crea muchas carpetas y codigo
+Dentro de la carpeta "app" por ver el nombre de los archivos y de la carpeta, tenemos este sistema parecido al de Next.js
+donde se les da unos nombres especificos a los componentes que creamos, esto es asi por que es como ExporRouter detecta que rutas usar
+Tenemos una pagina de not-found que sera el componente que se ejecutar cuando la ruta a la que estamos quierendo navegar no existe
+Dentro de la carpeta de (tabs) tenemos los archivos de:
+    * explore: Encargado de la navegacion entre pestanas
+    * index: es el archivo que busca por defecto cuando se ingrese en la carpeta
+assets: Tenemos recursos estaticos de imagenes y fuentas
+components:  Tenemos una parte de testin para probar los componentes, la parte de la navegacion y otros elementos de la interface
+constant: Colores de la aplicacion que vamos a utilizar
+hook: Para los custom hooks
+script: El archivo que contiene nos permite resetear el proyecto
