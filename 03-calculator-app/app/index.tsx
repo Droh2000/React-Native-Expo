@@ -4,7 +4,8 @@ import React from 'react'
 const CalculatorApp = () => {
   return (
     <View>
-      <Text>CalculatorApp</Text>
+      {/* Aqui estamos agregandole la fuente que importamos en el "_layout.tsx" si le damos un nombre incorrecto no nos aplicara nada */}
+      <Text style={{ fontSize:50, fontFamily: 'SpaceMono', color: 'white' }}>CalculatorApp</Text>
     </View>
   )
 }
