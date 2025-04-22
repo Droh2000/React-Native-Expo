@@ -6,6 +6,7 @@ import { useFonts } from 'expo-font';
 // Vemos que sale un "@" porque en el tsconfig tenemos en "paths" creada un Alias 
 import { Colors } from '@/constants/Colors';
 import { StatusBar } from 'expo-status-bar';
+import { globalStyles } from '@/styles/global-styles';
 
 // El nombre no es problema, le podemos poner el que nosotros queramos
 // Cuando el nombre del archivo sea _layout quiere decir que esta esperando un componente por defecto
@@ -30,7 +31,7 @@ export default function RootLayout() {
   // Realmente lo unico que va a tener este archivo es la configuracion del fondo que deberia de aplicarse en todas las paginas
   // Para que se estire la pantalla le colocamos el flex
   return (
-    <View style={{ backgroundColor: Colors.background, flex: 1 }}>
+    <View style={ globalStyles.background }>
       {/* Aqui vamos a renderizar los componentes hijos que creamos 
           Este Slot le dice a Expo que cualquier ruta hija lo renderize ahi
           Como nos encontramos en el / y no hemos especificado otra ruta entonces por defecto busca el "index"
