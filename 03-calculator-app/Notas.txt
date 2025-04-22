@@ -22,3 +22,33 @@ components:  Tenemos una parte de testin para probar los componentes, la parte d
 constant: Colores de la aplicacion que vamos a utilizar
 hook: Para los custom hooks
 script: El archivo que contiene nos permite resetear el proyecto
+
+* La carpeta de (tabs) la borramos y otros archivos y solo dejamos el _layout
+    Despues de hacer esto veremos en la aplicacion que no nos esta dando un error, solo nos sale una pantalla donde se indica que la pantalla no existe
+    ademas que vemos un header, este esta definido en el archivo _layout.tsx
+        Dentro de este archivo encontramos dos componentes, uno es para usar fuentes personalizadas que la toma de la carpeta font donde estan las fuentes dentro de assets
+        Ademas tenemos el hook del "useFonts" donde cargamos la fuente
+
+        // Prevent the splash screen from auto-hiding before asset loading is complete.
+        SplashScreen.preventAutoHideAsync();
+
+        // Si quitamos esta exportacion por defecto, se nos crasheara la aplicacion
+        export default function RootLayout() {
+        const colorScheme = useColorScheme();
+        // Con este argumento que desestructuramos nos dira cuando la fuente fue cargada
+        const [loaded] = useFonts({
+            SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+        });
+        // Con este cambiara ya hasta que la fuente este cargada
+        useEffect(() => {
+            if (loaded) {
+            // Cuando ya este cargada la fuente oculta este SplashScreen, esto no solo lo podemos ocultar cuando tenemos la fuente sino cuando 
+            // ya tenemos los datos iniciales o para determinar la sesion del usuario, o algo por el estilo
+            // (El SplashScreen es la imagen de carga de la aplicacion ) 
+            SplashScreen.hideAsync();
+            }
+        }, [loaded]);
+
+La carpeta "app" es nuestro sistema de rutas de la aplicacion, aqui no nombramos los componentes con la letra mayuscula
+
+Con esto vemos que no tenemos que configurar nada del Router si estamos usando la configuracion de la creacion por defecto del proyecto

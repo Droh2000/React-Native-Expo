@@ -1,39 +1,26 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+// rnfe + TAB
+import { View, Text } from 'react-native'
+import React from 'react'
+import { Slot } from 'expo-router'
 
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
+// El nombre no es problema, le podemos poner el que nosotros queramos
+// Cuando el nombre del archivo sea _layout quiere decir que esta esperando un componente por defecto
+// que normalmente se le pone "RootLayout" para indicar que este es el componentes donde todas las paginas
+// que vengan en esta estructura de fileSistem y sub carpetas van a pasar por este _layout
+// Este es el lugar ideal para colocar el contextAPI
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+    <View>
+      <Text>RootLayout</Text>
+
+      {/* Aqui vamos a renderizar los componentes hijos que creamos 
+          Este Slot le dice a Expo que cualquier ruta hija lo renderize ahi
+          Como nos encontramos en el / y no hemos especificado otra ruta entonces por defecto busca el "index"
+          de la carpeta (Entonces el contenido del "index.tsx" lo renderiza en donde dice SLOT)
+          Asi con esto podemos colocar arriba y abajo un contenido que salga todo el tiempo
+      */}
+      <Slot/>
+
+    </View>
+  )
 }
