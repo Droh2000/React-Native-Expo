@@ -1,5 +1,5 @@
 // rnfe + TAB
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
 import React from 'react'
 import { Slot } from 'expo-router'
 import { useFonts } from 'expo-font';
@@ -7,6 +7,14 @@ import { useFonts } from 'expo-font';
 import { Colors } from '@/constants/Colors';
 import { StatusBar } from 'expo-status-bar';
 import { globalStyles } from '@/styles/global-styles';
+
+// Configuracion de la barra de navegacion para que no se mire de color blanco
+import * as NavigationBar from 'expo-navigation-bar';
+// Como el codigo solo funciona en Android ya que si estamos en IOS nos saldra un warning, solo ejectuamos esto si el usuario esta en andorid
+const isAndroid = Platform.OS === 'android';
+if(isAndroid){
+  NavigationBar.setBackgroundColorAsync('black');
+}
 
 // El nombre no es problema, le podemos poner el que nosotros queramos
 // Cuando el nombre del archivo sea _layout quiere decir que esta esperando un componente por defecto

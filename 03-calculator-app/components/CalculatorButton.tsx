@@ -1,6 +1,7 @@
- import { Colors } from '@/constants/Colors'
+import { Colors } from '@/constants/Colors'
 import { globalStyles } from '@/styles/global-styles'
 import { Text, Pressable } from 'react-native'
+import * as Haptics from 'expo-haptics';
  
  // Como el texto es personalidao lo podemos recibir como un Children como una propeetie
  // Tambien el color y la forma es lo que varia para cada boton por eso las definimos aqui
@@ -30,7 +31,11 @@ import { Text, Pressable } from 'react-native'
             opacity: pressed ? 0.8 : 1, // Darle el efecto que se toco el boton
             width: doubleSize ? 180 : 80, // Si es True le cambiamos el tamano a 180
         })}
-        onPress={ onPress }
+        onPress={ () => {
+            // Este es el efecto de darle vibracion al tocar el boton
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+            onPress();
+        } }
     >
         <Text 
             style={{ 

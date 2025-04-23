@@ -52,3 +52,10 @@ script: El archivo que contiene nos permite resetear el proyecto
 La carpeta "app" es nuestro sistema de rutas de la aplicacion, aqui no nombramos los componentes con la letra mayuscula
 
 Con esto vemos que no tenemos que configurar nada del Router si estamos usando la configuracion de la creacion por defecto del proyecto
+
+Queremos que cuando toquemos los botones, sentir la vibracion de que se tocaron pero lograr eso tenemos que instalar un paquete de tercero
+ademas en los celulares de androir en la parte de abajo de la aplicacion tenemos que la barra se mira de color blanco, eso tambien lo vamos a cambiar
+Para lo de la barra blanca instalamos Expo NavigationBar
+    * npx expo install expo-navigation-bar
+Para agregarle el efecto de vibracion al tocar el boton
+    * npx expo install expo-haptics
