@@ -32,7 +32,33 @@ export const useCalculator = () => {
 
     // Logica de la construccion de ese numero que se llama cuando la persone toque los botones
     const buildNumber = ( numberString: string ) => {
-        
+        // Verificar  si ya existe el punto decimal (Si ya toco el Punto no tiene porque poder ingresar otro punto)
+        if(number.includes('.') && numberString === '.') return; // No hacemos nada porque ya tiene el punto
+
+        // Si el usuario ya preciono el cero o el cero empezando con el simbolo negativo
+        if(number.startsWith('0') || number.startsWith('-0')){
+            // Evaluamos si nos manda un punto decimal, en este caso si lo ponemos
+            if(numberString === '.'){
+                return setNumber(number + numberString);
+            }
+            
+            // Evaluar si es otro cero y no hay punto (Solo se permite poner varios ceros juntos cuando ya hay un punto decimal antes)
+            if(numberString === '0' && number.includes('.')){
+                return setNumber(number + numberString); 
+            }
+
+            // Evaluar si es diferente de cero no hay punto y es el primer numero (No se permite poner el cero y despues junto otro numero)
+            if( numberString != '0' && !number.includes('.') ){
+                return setNumber(numberString);
+            }
+
+            // Evitar poner 0000000.00
+            if( numberString === '0' && !number.includes('.')){
+                return;
+            }
+        }
+
+        setNumber(number + numberString);
     }
 
     return {
