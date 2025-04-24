@@ -29,6 +29,41 @@ export const useCalculator = () => {
         setFormula(number);
     }, [number]);
 
+    // Para cuando se precione el boton de limpiar la pantalla 
+    const clean = () => {
+        setNumber('0');
+        setPrevNumber('0');
+        setFormula('0');
+        lastOperation.current = undefined;
+    }
+
+    // Cambiar de signo segun como se encuentre actualmente el valor
+    const toggleSign = () => {
+        // Si ya incluye el simbolo negativo tomamos donde esta ese caracter y se quitamos
+        if(number.startsWith('-')){
+            return setNumber(number.replace('-', ''));
+        }
+        setNumber('-'+number);
+    }
+
+    // Para ir borrando el ultimo digito (Si hay un digito y precinoamos el boton tiene que quedar un 0 no un String vacio)
+    const deleteLast = () => {
+        let currentSign = '-';
+        let temporalNumber = number;
+
+        if( number.includes('-') ){
+            currentSign = '-';
+            // Aqui qutamos el simbolo menos
+            temporalNumber = number.substring(1);
+        }
+
+        if( temporalNumber.length > 1 ){
+            // Con el SLICE cortamos la ultima posicion
+            return setNumber(currentSign + temporalNumber.slice(0, -1));
+        }
+
+        setNumber('0');
+    }
 
     // Logica de la construccion de ese numero que se llama cuando la persone toque los botones
     const buildNumber = ( numberString: string ) => {
@@ -66,5 +101,8 @@ export const useCalculator = () => {
         number,
         prevNumber,
         buildNumber,
+        clean,
+        toggleSign,
+        deleteLast,
     }
 }

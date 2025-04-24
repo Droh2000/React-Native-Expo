@@ -10,7 +10,10 @@ const CalculatorApp = () => {
   
   const {
     formula,
-    buildNumber
+    buildNumber,
+    clean,
+    toggleSign,
+    deleteLast,
   } = useCalculator();
 
   /* 
@@ -60,19 +63,19 @@ const CalculatorApp = () => {
           label='C'
           blackText // Con solo mandarlo asi seria a tener la property como True
           color={ Colors.lightGray }
-          onPress={ () => buildNumber('c') }
+          onPress={ clean }
         />
         <CalculatorButton 
           label='+/-'
           blackText
           color={ Colors.lightGray }
-          onPress={ () => buildNumber('+/-') }
+          onPress={ toggleSign }
         />
         <CalculatorButton 
           label='del'
           blackText
           color={ Colors.lightGray }
-          onPress={ () => buildNumber('del') }
+          onPress={ deleteLast }
         />
         <CalculatorButton 
           label='÷'
