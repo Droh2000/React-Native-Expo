@@ -40,8 +40,9 @@ export const useCalculator = () => {
     // Entonces cuando cambiemos el "number" queremos actualizar la formula
     useEffect(() => {
         // Calcular el resultado que se mira pequeño en la parte de abajo
-        // setPrevNumber(number);
-    }, [number]);
+        const subResult = calculateSubResult();
+        setPrevNumber(`${subResult}`);
+    }, [formula]);
 
     // Para cuando se precione el boton de limpiar la pantalla 
     const clean = () => {
@@ -81,7 +82,8 @@ export const useCalculator = () => {
 
     // El numero anterior lo queremos establecer (Aqui vamos a hacer un calculo previo para poder mostrarlo abajo del numero grande)
     const setLastNumber = () => {
-        // Calculo previo para poder mostrar abajo
+        // Calculo previo para poder mostrar abajo (Ademas que sea como precionar el boton del igual cada vez que precionamos algunos de los botones de la opreacion)
+        CalculateResult();
 
         // Si estamos en la situacion en la que el numero termina con un punto, cortamos esa ultima pocicion
         if( number.endsWith('.') ){
@@ -113,6 +115,47 @@ export const useCalculator = () => {
         setLastNumber();
         lastOperation.current = Operador.add;
     }
+
+    // Calcular el resultado matematico (Esto se va a ejecutar cada vez que se precione el boton de las operaciones o el del simbolo igual)
+    // Este lo vamos a mandar a llamar cada vez que la formula cambie
+    const calculateSubResult = () => {
+        // Aqui tomamos la formula que esta formado por: Numero SimboloOperador Numero, si solo tenemos un Numero entonces no aplica
+        // Otenemos cada una de las partes de la formula (Si no esta formada asi los valores obtendremos Undefined)
+        const [ firstValue, operation, secondValue ] = formula.split(' ');
+
+        // Convertimos los String a numeros
+        const num1 = Number(firstValue);
+        const num2 = Number(secondValue); // Si es undefined nos dara aqui NaN
+
+        // Si tenemos un numero y toca igual el resultado debe ser el mismo numero
+        if( isNaN(num2) ) return num1;
+
+        // Aplicamos el calculo matematico
+        switch(operation){
+            case Operador.add:
+                return num1 + num2;
+            case Operador.substract:
+                return num1 - num2;
+            case Operador.multiply:
+                return num1 * num2;
+            case Operador.divide:
+                return num1 / num2;
+            default:
+                throw new Error(`Operation ${operation} not Implemented`);
+        }
+    }
+
+    // Esta funcion es para que cuando se precione el simbolo del igual se cambie la formula escrita por el resultado obtenido
+    const CalculateResult = () => {
+        // Calculamos el resultado matematico
+        const result = calculateSubResult();
+        setFormula(`${ result }`);
+
+        // Reseteamos los valores
+        lastOperation.current = undefined;
+        setPrevNumber('0');
+    }
+
 
     // Logica de la construccion de ese numero que se llama cuando la persone toque los botones
     const buildNumber = ( numberString: string ) => {
@@ -157,5 +200,7 @@ export const useCalculator = () => {
         addOperation,
         substractOperation,
         multiplyOperation,
+        calculateSubResult,
+        CalculateResult,
     }
 }

@@ -19,6 +19,8 @@ const CalculatorApp = () => {
     addOperation,
     substractOperation,
     multiplyOperation,
+    calculateSubResult,
+    CalculateResult,
   } = useCalculator();
 
   /* 
@@ -167,7 +169,7 @@ const CalculatorApp = () => {
           label='='
           blackText
           color={ Colors.orange }
-          onPress={ () => console.log('=') }
+          onPress={ CalculateResult }
         />
       </View>
 
