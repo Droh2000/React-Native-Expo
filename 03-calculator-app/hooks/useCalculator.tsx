@@ -22,11 +22,25 @@ export const useCalculator = () => {
     // No queremos que React empieze a procesar algo si cambia el ultimo boton
     const lastOperation = useRef<Operador>();
 
+    // Establecemos otro efecto para que solo sean responzables de una tarea, aunque se podria meter lo de este UseEffect en el de abajo
+    useEffect(() => {
+      // Preguntamos si tiene un valor (El signo de la operacion que se preciono)
+      if( lastOperation.current ){
+        // Tomamos la primera posicion de la formula 
+        const firstFormulaPart = formula.split(' ').at(0);
+        // Al ultimo "number" es el valor del numero actual del que estamos construyendo
+        setFormula(`${ firstFormulaPart } ${ lastOperation.current } ${ number }`)
+      } else {
+        setFormula(number);
+      }
+    }, [number])
+    
+
     // Para construir el numero tenemos la variable "number" pero lo que es la variable "formula" es lo que se ve reflejado en la pantalla
     // Entonces cuando cambiemos el "number" queremos actualizar la formula
     useEffect(() => {
         // Calcular el resultado que se mira pequeño en la parte de abajo
-        setFormula(number);
+        // setPrevNumber(number);
     }, [number]);
 
     // Para cuando se precione el boton de limpiar la pantalla 
@@ -63,6 +77,41 @@ export const useCalculator = () => {
         }
 
         setNumber('0');
+    }
+
+    // El numero anterior lo queremos establecer (Aqui vamos a hacer un calculo previo para poder mostrarlo abajo del numero grande)
+    const setLastNumber = () => {
+        // Calculo previo para poder mostrar abajo
+
+        // Si estamos en la situacion en la que el numero termina con un punto, cortamos esa ultima pocicion
+        if( number.endsWith('.') ){
+            setPrevNumber(number.slice(0, -1));
+        }
+
+        setPrevNumber(number); // Lo igualamos al numero que estamos construyendo en este momento
+        setNumber('0'); // El actual seria 0 que es el grandote que se muestra en la pantalla cuando se precionan los botones
+    }
+
+
+    // Cuando toquemos los botones de las operaciones vamos a disparar esta accion
+    const divideOperation = () => {
+        setLastNumber();
+        lastOperation.current = Operador.divide;
+    }
+
+    const multiplyOperation = () => {
+        setLastNumber();
+        lastOperation.current = Operador.multiply;
+    }
+
+    const substractOperation = () => {
+        setLastNumber();
+        lastOperation.current = Operador.substract;
+    }
+
+    const addOperation = () => {
+        setLastNumber();
+        lastOperation.current = Operador.add;
     }
 
     // Logica de la construccion de ese numero que se llama cuando la persone toque los botones
@@ -104,5 +153,9 @@ export const useCalculator = () => {
         clean,
         toggleSign,
         deleteLast,
+        divideOperation,
+        addOperation,
+        substractOperation,
+        multiplyOperation,
     }
 }

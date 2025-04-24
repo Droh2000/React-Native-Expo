@@ -10,10 +10,15 @@ const CalculatorApp = () => {
   
   const {
     formula,
+    prevNumber,
     buildNumber,
     clean,
     toggleSign,
     deleteLast,
+    divideOperation,
+    addOperation,
+    substractOperation,
+    multiplyOperation,
   } = useCalculator();
 
   /* 
@@ -46,10 +51,14 @@ const CalculatorApp = () => {
           { formula }
         </ThemeText>
 
-        <ThemeText 
-          variant='h2'
-        >250
-        </ThemeText>
+        {
+          // Cuando no haya ningun cambio ya que lo escrito en la formula es lo mismo que el numero anterior
+          formula === prevNumber ? (
+            <ThemeText variant='h2'> </ThemeText>
+          ) : (
+            <ThemeText variant='h2'>{ prevNumber }</ThemeText>
+          )
+        }
       </View>
 
       {/* Estos son las filas de botones 
@@ -81,7 +90,7 @@ const CalculatorApp = () => {
           label='÷'
           blackText
           color={ Colors.orange }
-          onPress={ () => buildNumber('Divicion') }
+          onPress={ divideOperation }
         />
       </View>
       <View style={ globalStyles.row }>
@@ -101,7 +110,7 @@ const CalculatorApp = () => {
           label='X'
           blackText
           color={ Colors.orange }
-          onPress={ () => buildNumber('X') }
+          onPress={ multiplyOperation }
         />
       </View>
       <View style={ globalStyles.row }>
@@ -121,7 +130,7 @@ const CalculatorApp = () => {
           label='-'
           blackText
           color={ Colors.orange }
-          onPress={ () => buildNumber('-') }
+          onPress={ substractOperation }
         />
       </View>
       <View style={ globalStyles.row }>
@@ -141,7 +150,7 @@ const CalculatorApp = () => {
           label='+'
           blackText
           color={ Colors.orange }
-          onPress={ () => buildNumber('+') }
+          onPress={ addOperation }
         />
       </View>
       <View style={ globalStyles.row }>
