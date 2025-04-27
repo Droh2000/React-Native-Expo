@@ -9,7 +9,17 @@ module.exports = {
   ],
   presets: [require("nativewind/preset")],
   theme: {
-    extend: {},
+    extend: {
+      // Aqui configuramos las fuentes que descargamos para usarlas como si fueran clases
+      // Le pasamos los nombres que queremos usar en las clases de Tailwwind (Nombre de la clase)
+      // Entre las llaves le ponemos el nombre del archivo
+      fontFamily: {
+        //La siguiente fuente que especificamos seria la que tome si no se encuentra la que especificamos
+        'work-black': ['WorkSans-Black', 'sans-serif'],
+        'work-light': ['WorkSans-Light', 'sans-serif'],
+        'work-medium': ['WorkSans-Medium', 'sans-serif'],
+      }
+    },
   },
   plugins: [],
 }
