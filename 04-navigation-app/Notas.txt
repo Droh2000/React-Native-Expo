@@ -1,0 +1,6 @@
+Lo haremos es la instalacion de los estilos de Nativewind para poder usar Tailwindcss en Expo
+para esto ejecutamos el siguiente comando:
+    * npx expo install nativewind tailwindcss@^3.4.17 react-native-reanimated@3.16.2 react-native-safe-area-context
+De aqui seguimos los pasos de la documentacion oficial
+
+Ademas de la aplicacion de TailwindCss podemos aplicar cambios y configuraciones globales en el tema y tener muchas cosas personalizadas
