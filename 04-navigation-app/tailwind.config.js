@@ -10,6 +10,17 @@ module.exports = {
   presets: [require("nativewind/preset")],
   theme: {
     extend: {
+      // Definimos nuestros colores personalizados
+      colors: {
+        primary: '#49129C',
+        // La forma de especificarlo asi, es para que al usarlo podamos darle variaciones en el tono segun el numero especificado aqui
+        secundary: {
+          DEFAULT: '#B40086',
+          100: '#C51297',
+          200: '#831266',
+        }
+      },
+      tertiary: '#EF2967',
       // Aqui configuramos las fuentes que descargamos para usarlas como si fueran clases
       // Le pasamos los nombres que queremos usar en las clases de Tailwwind (Nombre de la clase)
       // Entre las llaves le ponemos el nombre del archivo
