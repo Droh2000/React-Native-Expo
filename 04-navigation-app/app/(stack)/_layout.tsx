@@ -4,12 +4,17 @@ import { Stack } from 'expo-router'
 // Al colocar Stack podremos hacer que todo funcione de nuevo 
 // Esto lo hacemos asi para no hacer crecer en mucho codigo el archivo de _layout original
 const StackLayout = () => {
+    /*
+        Tenemos dos formas de configurar las pantallas, una es a nivel de Stack (Para todas las pantallas) y la otra a nivel
+        de pantalla individual con Stack.Screen
+    */
   return (
     <Stack>
         {/* 
             Aqui podremos crear automaticamente rutas en cada una de las carpetas de los componentes que tenemos  
             y les configuramos como queramos, Ahora si tenemos el nombre que nosotros le pongamos en la parte de arriba de
             la aplicacion indicando la pantalla donde nos encontramos
+            Dentro de las Options tenemos para mejorar la navegacion cuando precionamos el boton
         */}
         <Stack.Screen
             name="home/index"
