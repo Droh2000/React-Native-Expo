@@ -9,7 +9,17 @@ const StackLayout = () => {
         de pantalla individual con Stack.Screen
     */
   return (
-    <Stack>
+    <Stack
+        screenOptions={{
+            // Aqui podemos personalizar a nivel global
+            //headerShown: false, // Para quitar la parte que indica a cual pantalla estamos
+            headerShadowVisible: false, // Para quitar la sombra que sale debado de la cabezera
+            // Con esto cambiamos el color de fondo
+            contentStyle: {
+                backgroundColor: 'white',
+            }
+        }}
+    >
         {/* 
             Aqui podremos crear automaticamente rutas en cada una de las carpetas de los componentes que tenemos  
             y les configuramos como queramos, Ahora si tenemos el nombre que nosotros le pongamos en la parte de arriba de
