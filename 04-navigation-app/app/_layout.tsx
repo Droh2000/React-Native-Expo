@@ -1,4 +1,4 @@
-import { Slot, SplashScreen } from "expo-router"
+import { Slot, SplashScreen, Stack } from "expo-router"
 import "./global.css"
 import { useFonts } from 'expo-font';
 import { useEffect } from 'react';
@@ -27,7 +27,13 @@ const RootLayout = () => {
   // En este caso si no tenemos las fuentes pero no hay error entonces no regresamos nada
   if( !fontsLoaded && !error ) return null;
 
+  // Con expo por defecto tenemos el StackNavigation, con esto tenemos una navegacion mas natural de celular donde en la parte de arriba indica
+  // en que pantalla estamos y donde tambien sale la flecha para regresarse hacia atras, si queremos configurar esto, lo podemos hacer en cada una de las pantallas
+  // o crearnos una configuracion de un Stack
+  // Aqui con el Slot le decimos que lo que sea que este en su hijo que lo renderize aqui
   return <Slot/>;
+  //return <Stack/>; // Al cambiarlo ya tenemos el StackNavigation
+  // esta linea de arriba la comentamos porque establecemos el Slot en el Layout de la carpeta (stack)
 }
 
 export default RootLayout

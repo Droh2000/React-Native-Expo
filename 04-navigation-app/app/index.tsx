@@ -1,6 +1,6 @@
 import { Link, Redirect } from 'expo-router'
 import { View, Text, SafeAreaView } from 'react-native'
-import ProductsScreen from './products'
+import ProductsScreen from './(stack)/products'
 
 // Este es nuestro punto de entrada en la aplicacion
 const index = () => {

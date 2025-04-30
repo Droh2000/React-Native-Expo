@@ -19,4 +19,7 @@ y aplicar esa configuracion a todos los archivos que esten dentro de la carpeta 
 Hay algunas configuraciones que podemos indicar en el nombre del archivo
     * Cuando el nombre esta entre "()" quiere decir que ese URL no sea visible en la navegacion por el URL, si dentro de "app" no tendriamos el archivo "index.tsx" creado, la aplicacion por automatico
       toma el Index de la carpeta que tenga el nombre entre perentesis, si tenemos varias carpetas entre () tomara la que alfabeticamente este primero
+
+La carpeta (stack) que creamos es para que sea un agrupador y no salga visiblemente en las rutas, ya que ahi metimos todas las carpetas de nuestros componentes
+
        

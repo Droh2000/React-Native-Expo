@@ -9,12 +9,24 @@ const HomeScreen = () => {
       <View className="px-10 mt-5">
         {/* Lo colocamos aqui para poder mirar temporalmente como se mira el boton*/}
         <CustomButton
-        className='mb-10'
+          className='mb-2'
           color='primary'   
           // Hacemos la navegacion desde el boton
           // Con .push colocamos una pantalla sobre la pagina actual
           onPress={ () => router.push('/products') }   
         >Producto</CustomButton>
+
+        <CustomButton
+          className='mb-2'
+          color='secondary'
+          onPress={ () => router.push('/profile') }   
+        >Profile</CustomButton> 
+
+        <CustomButton
+          className='mb-2'
+          color='tertiary'
+          onPress={ () => router.push('/settings') }   
+        >Settings</CustomButton> 
 
         {/* Si queremos trabajar ese CustomBotton como si fuera un Link 
           Solo le colocamos el asChild para que funcione correctamente (Si usamos esto en versiones 
@@ -22,13 +34,8 @@ const HomeScreen = () => {
           En este Commit arreglamos el codigo para quitar ese Warining
         */}
         <Link href="/products" asChild>
-          <CustomButton className='mb-10' color='primary'>Productos</CustomButton>
+          <CustomButton variant='text-only' className='mb-10' color='primary'>Productos</CustomButton>
         </Link>
-
-        <CustomButton
-          variant='text-only'
-          onPress={ () => router.push('/products') }   
-        >Producto</CustomButton> 
 
         {/*<Link className="mb-5" href="/products">
           Productos{' '}
