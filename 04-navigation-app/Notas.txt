@@ -4,3 +4,19 @@ para esto ejecutamos el siguiente comando:
 De aqui seguimos los pasos de la documentacion oficial
 
 Ademas de la aplicacion de TailwindCss podemos aplicar cambios y configuraciones globales en el tema y tener muchas cosas personalizadas
+
+En este punto sabemos que el app/index.tsx es la pantalla que estamos viendo en este momento, cada archico que creemos dentro de la carpeta APP
+termina siendo una ruta, el nombre que le demos al archivo no es importante, lo que si es importante es que la exportacion se por DEFAULT
+
+Si vemos que el contenido de la pagina se va muy arriba del celular y se oculta con la camara frontal, para solucionar eso podriamos encerrar el Slot que regresamos en el _layout.tsx
+dentro del SafeAreaView, pero no se acostumbra hacer eso porque puede que en ciertas pantallas si quieramos que tape esa parte, asi que eso depende de la pantalla
+asi que el SafeArea se coloca segun la pantalla que si queremos que tape o no la parte de arriba del celular
+
+En la carpeta "app" hay que poner orden desde el inicio para que no descontrole, por eso lo componentes o las nuevas pantallas no las creamos directamente ahi sino dentro de una carpeta
+y dentro el nombre de la pantalla se la cambiamos de "products.tsx" a "index.tsx" para que cuando mandemos al directorio de la carpeta automaticamente busque el archivo llamado "index"
+ademas asi, si queremos un diseño que se aplique a todas las paginas que tengan productos o de esta misma categoria entcones dentro de esta carpeta nos podemos crear otro archivo "_layout.tsx"
+y aplicar esa configuracion a todos los archivos que esten dentro de la carpeta "products", hay que asegurarse que el nombre de las carpetas y de los componentes esten en minusculas
+Hay algunas configuraciones que podemos indicar en el nombre del archivo
+    * Cuando el nombre esta entre "()" quiere decir que ese URL no sea visible en la navegacion por el URL, si dentro de "app" no tendriamos el archivo "index.tsx" creado, la aplicacion por automatico
+      toma el Index de la carpeta que tenga el nombre entre perentesis, si tenemos varias carpetas entre () tomara la que alfabeticamente este primero
+       
