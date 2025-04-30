@@ -1,12 +1,30 @@
 import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
+import CustomButton from '@/components/shared/CustomButton'
 
 const HomeScreen = () => {
   return (
     <SafeAreaView>
-      <View className="px-10">
-        <Link className="mb-5" href="/products">
+      <View className="px-10 mt-5">
+        {/* Lo colocamos aqui para poder mirar temporalmente como se mira el boton*/}
+        <CustomButton
+          color='primary'   
+          // Hacemos la navegacion desde el boton
+          // Con .push colocamos una pantalla sobre la pagina actual
+          onPress={ () => router.push('/products') }   
+        >Producto</CustomButton>
+
+        {/* Si queremos trabajar ese CustomBotton como si fuera un Link 
+          Solo le colocamos el asChild para que funcione correctamente (Si usamos esto en versiones 
+          viejas tendremos Warnings)
+        */}
+        <Link href="/products" asChild>
+          <CustomButton color='primary'>Productos</CustomButton>
+        </Link>
+
+
+        {/*<Link className="mb-5" href="/products">
           Productos{' '}
         </Link>
         <Link className="mb-5" href="/profile">
@@ -14,7 +32,7 @@ const HomeScreen = () => {
         </Link>
         <Link className="mb-5" href="/settings">
           Ajustes{' '}
-        </Link>
+        </Link>*/}
       </View>
     </SafeAreaView>
   )
