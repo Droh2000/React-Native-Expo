@@ -42,3 +42,12 @@ TABS
     Depues de la implementacion de los TABS tenemos un problema con los Headers, una alternativa es desactivar los headers y los manejamos de una forma conntrolada por nosotros
     donde nos creamos un componente de navegacion donde le ponemos la flecha para que el usuario se regrese a la pagina anterior pero en este caso queremos seguir usando el Stack 
     porque esta funcionando, lo que se nos ve mal es el titulo de los TABS porque su funcionalidad ya la incluimos en el Stack
+
+Drawer
+
+    Este es otro sistema de navegacion, este no viene instalado por defecto en Expo y lo tenemos que configurar nosotros
+    La navegacion es agreagar el menu de hamburguesa donde se nos listan todas las opciones y al ocultarse nos sale con las tres rayas el menu
+    donde se despliega u oculta
+
+    Si queremos agregar todo nuestro sistema de TABS, esa carpeta "tabs" tiene que estar dentro de la carpeta del menu "drawer" para que los usuarios puedan navegar a la pantalla 
+    

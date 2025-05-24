@@ -1,6 +1,6 @@
 import { Link, Redirect } from 'expo-router'
 import { View, Text, SafeAreaView } from 'react-native'
-import ProductsScreen from './(stack)/products'
+import ProductsScreen from './tabs/(stack)/products'
 
 // Este es nuestro punto de entrada en la aplicacion
 const index = () => {
@@ -43,7 +43,10 @@ const index = () => {
   // return <Redirect href="/home"/>
 
   // Ahora apuntamos a la pagina de los Tabs
-  return <Redirect href="/tabs"/>
+  //return <Redirect href="/tabs"/>
+
+  // Para ver como se ve el menu de hamburguesa
+  return <Redirect href="/drawer"/>
 }
 
 export default index
