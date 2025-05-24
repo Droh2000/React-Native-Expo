@@ -3,6 +3,7 @@ import React from 'react'
 import { Link, router } from 'expo-router'
 import CustomButton from '@/components/shared/CustomButton'
 
+// Despues de meter la carpeta (STACK) dentro de la carpeta TABS tenedremos que arreglar la navegacion de las pantallas internas para poder accesarlas
 const HomeScreen = () => {
   return (
     <SafeAreaView>
@@ -13,19 +14,19 @@ const HomeScreen = () => {
           color='primary'   
           // Hacemos la navegacion desde el boton
           // Con .push colocamos una pantalla sobre la pagina actual
-          onPress={ () => router.push('/products') }   
+          onPress={ () => router.push('/tabs/(stack)/products') }   
         >Producto</CustomButton>
 
         <CustomButton
           className='mb-2'
           color='secondary'
-          onPress={ () => router.push('/profile') }   
+          onPress={ () => router.push('/tabs/profile') }   
         >Profile</CustomButton> 
 
         <CustomButton
           className='mb-2'
           color='tertiary'
-          onPress={ () => router.push('/settings') }   
+          onPress={ () => router.push('/tabs/settings') }   
         >Settings</CustomButton> 
 
         {/* Si queremos trabajar ese CustomBotton como si fuera un Link 
@@ -33,7 +34,7 @@ const HomeScreen = () => {
           viejas tendremos Warnings)
           En este Commit arreglamos el codigo para quitar ese Warining
         */}
-        <Link href="/products" asChild>
+        <Link href="/tabs/products" asChild>
           <CustomButton variant='text-only' className='mb-10' color='primary'>Productos</CustomButton>
         </Link>
 

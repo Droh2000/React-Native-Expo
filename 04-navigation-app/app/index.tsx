@@ -40,7 +40,10 @@ const index = () => {
   // Como este index puede que solo sirva para redireccionar a otras pantallas 
   // Lo que queremos hacer es que tan pronto se lanze la aplicacion queremos que se mueva a la pantalla de productos 
   // Asi hacemos una redireccion (Al declrar la ruta nos puede decir que hay un error de sintaxis pero en este caso hay que cerrar todo o borrar la carpeta de .expo por el cache)
-  return <Redirect href="/home"/>
+  // return <Redirect href="/home"/>
+
+  // Ahora apuntamos a la pagina de los Tabs
+  return <Redirect href="/tabs"/>
 }
 
 export default index

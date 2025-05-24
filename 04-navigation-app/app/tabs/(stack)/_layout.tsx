@@ -12,7 +12,7 @@ const StackLayout = () => {
     <Stack
         screenOptions={{
             // Aqui podemos personalizar a nivel global
-            //headerShown: false, // Para quitar la parte que indica a cual pantalla estamos
+            headerShown: false, // Para quitar la parte que indica a cual pantalla estamos (Descomentamos la linea por los Tabs porque nos sale doble si esta comentada)
             headerShadowVisible: false, // Para quitar la sombra que sale debado de la cabezera
             // Con esto cambiamos el color de fondo
             contentStyle: {

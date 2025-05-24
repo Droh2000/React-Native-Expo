@@ -22,4 +22,19 @@ Hay algunas configuraciones que podemos indicar en el nombre del archivo
 
 La carpeta (stack) que creamos es para que sea un agrupador y no salga visiblemente en las rutas, ya que ahi metimos todas las carpetas de nuestros componentes
 
-       
+Vamos a ver como agregar diferentes formas de menus a la aplicacion
+
+TABS
+
+    La estructura que vamos a estar buscando es algo como esto:
+        - app
+            * _layout.tsx       -> Aqui definimos lo que es global
+            - (tabs)            -> El nombre esta entre () para indicar que su contenido no es parte del URL 
+                * _layout.tsx   -> Archivo de los Tabs
+                * index.tsx     -> Apuntaria al Home
+                * settings.tsx  -> Pagina de al lado del boton del Home
+
+    Todo depende de como queremos que funcione el sistema de TABS, podemos tenerlos unicamente entre paginas, o en toda la aplicacion
+    Como en este caso dentro de la carpeta "app" nuestro punto de inicio seria el "(stack)" pero queremos tener un TAB que incluya toda la navegacion
+    que tangamos, por eso nos creamos la carpeta "tabs" sin parentesis porque sera parte del URL, dentro de esta carpeta nos creamos las paginas 
+    que queremos mostrar
