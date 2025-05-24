@@ -6,7 +6,17 @@ import { FontAwesome } from '@expo/vector-icons';
 const TabsLayout = () => {
   return (
      // El Tab que este acivo se mostrar del color indicado, las propiedades que pongamos aqui se aplicaran en todos los tabs
-     <Tabs screenOptions={{ tabBarActiveTintColor: 'blue' }}> 
+     <Tabs screenOptions={{ 
+        tabBarActiveTintColor: 'blue', 
+        // Asi ocultamos el Header que se ve mal porque ya configuramos nosotros el Stack
+        headerShown: false,
+        // Aqui tenemos muchas opciones para poder personalizar a nuestro gusto
+        // en este caso le cambiamos el color de fondo de la barra de Tabs
+        tabBarStyle: {
+          backgroundColor: 'black',
+        },
+        tabBarActiveBackgroundColor: 'white',
+      }}> 
         {/*Queremos que en lugar de mostrar el HomeScreen queremos mostrar el contenido de la carpeta (stack), Esto implica mover el FileSystem
         asi que movimos la carpeta "(stack)" dentro de la carpeta tabs, asi automaticamente veremos que nuestra applicacion ya nos detecta el nuevo TAB
         pero hay que configurarlo aqui*/}

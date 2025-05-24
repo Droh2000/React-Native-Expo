@@ -38,3 +38,7 @@ TABS
     Como en este caso dentro de la carpeta "app" nuestro punto de inicio seria el "(stack)" pero queremos tener un TAB que incluya toda la navegacion
     que tangamos, por eso nos creamos la carpeta "tabs" sin parentesis porque sera parte del URL, dentro de esta carpeta nos creamos las paginas 
     que queremos mostrar
+
+    Depues de la implementacion de los TABS tenemos un problema con los Headers, una alternativa es desactivar los headers y los manejamos de una forma conntrolada por nosotros
+    donde nos creamos un componente de navegacion donde le ponemos la flecha para que el usuario se regrese a la pagina anterior pero en este caso queremos seguir usando el Stack 
+    porque esta funcionando, lo que se nos ve mal es el titulo de los TABS porque su funcionalidad ya la incluimos en el Stack
