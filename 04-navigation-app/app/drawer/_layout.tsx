@@ -1,13 +1,24 @@
 import { View, Text } from 'react-native'
 import { Drawer } from 'expo-router/drawer'
 import { Ionicons } from '@expo/vector-icons';
+import CustomDrawer from '@/components/shared/CustomDrawer';
 
 const DrawerLayout = () => {
   return <Drawer
+    // Cuando llamemos el DrawerContent nos va a ignorar todas los Drawer.Screen ya que las toma como una configuracion visual de las opciones del drawer
+    // No es que hayan desaparecidos, simplemente no estan renderizadas, con esto tenemos el ponder de poner otro componente
+    // Debajo de esto requerimos que nos salgan las opciones que habiamos definido, cuando mandamos asi como vemos, solo el nombre del componente
+    // estamos mandando por referencia las Properties que se las estamos mandando al componente
+    drawerContent={ CustomDrawer }
+
     screenOptions={{
       overlayColor: 'rgba(0,0,0,4)', // Esto es para que cuando ingresemos al menu la parte del fondo tome este color que indiquemos
       drawerActiveTintColor: 'indigo', // El color que tendra la opcion del menu seleccionada
       headerShadowVisible: false, // Para quitar una linea que se ve arriba
+      // Igual tenemos muchas mas opciones
+      headerBackgroundContainerStyle: {
+        backgroundColor: 'white'
+      }
     }}
   >
     <Drawer>
