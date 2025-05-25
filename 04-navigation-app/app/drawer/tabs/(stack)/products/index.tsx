@@ -29,7 +29,7 @@ const ProductsScreen = () => {
                 Por la forma en la que creamos el archivo, le indicamos en la ruta que podemos mandar el ID del producto
                 Si nos da error al declarar la ruta, hay que cancelar la ejecucion y volver a ejecutar el comando 
               */}
-              <Link href={`/tabs/(stack)/products/${item.id}`} className='text-primary'>
+              <Link href={`/drawer/tabs/products/${item.id}`} className='text-primary'>
                 Ver Detalles
               </Link>
             </View>
