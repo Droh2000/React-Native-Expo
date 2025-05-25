@@ -50,4 +50,3 @@ Drawer
     donde se despliega u oculta
 
     Si queremos agregar todo nuestro sistema de TABS, esa carpeta "tabs" tiene que estar dentro de la carpeta del menu "drawer" para que los usuarios puedan navegar a la pantalla 
-    
