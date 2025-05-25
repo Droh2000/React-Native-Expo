@@ -14,19 +14,20 @@ const HomeScreen = () => {
           color='primary'   
           // Hacemos la navegacion desde el boton
           // Con .push colocamos una pantalla sobre la pagina actual
-          onPress={ () => router.push('/drawer/tabs/products') } // Arreglamos los enlaces despues de mover la carpeta tabs dentro de drawer  
+          // Vemos que despues de poner entre parentesis los directorios, ahora las rutas se simplificaron mucho
+          onPress={ () => router.push('/products') } // Arreglamos los enlaces despues de mover la carpeta tabs dentro de drawer  
         >Producto</CustomButton>
 
         <CustomButton
           className='mb-2'
           color='secondary'
-          onPress={ () => router.push('/drawer/tabs/profile') }   
+          onPress={ () => router.push('/profile') }   
         >Profile</CustomButton> 
 
         <CustomButton
           className='mb-2'
           color='tertiary'
-          onPress={ () => router.push('/drawer/tabs/settings') }   
+          onPress={ () => router.push('/settings') }   
         >Settings</CustomButton> 
 
         {/* Si queremos trabajar ese CustomBotton como si fuera un Link 
@@ -34,7 +35,7 @@ const HomeScreen = () => {
           viejas tendremos Warnings)
           En este Commit arreglamos el codigo para quitar ese Warining
         */}
-        <Link href="/drawer/tabs/products" asChild>
+        <Link href="/products" asChild>
           <CustomButton variant='text-only' className='mb-10' color='primary'>Productos</CustomButton>
         </Link>
 

@@ -36,7 +36,7 @@ const DrawerLayout = () => {
       />
       {/* Aqui es donde queremos que se muestren los Tabs */}
       <Drawer.Screen
-        name="tabs" // Como dentro de la carpeta no tenemos ningun archivo Home solo especifimos el nombre no seguido del Slash
+        name="(tabs)" // Como dentro de la carpeta no tenemos ningun archivo Home solo especifimos el nombre no seguido del Slash
         options={{
         drawerLabel: 'Tabs + Stack',
         title: 'Tabs + Stack',

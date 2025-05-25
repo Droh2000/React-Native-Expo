@@ -52,3 +52,6 @@ Drawer
     Si queremos agregar todo nuestro sistema de TABS, esa carpeta "tabs" tiene que estar dentro de la carpeta del menu "drawer" para que los usuarios puedan navegar a la pantalla 
 
     Movimos la carpeta de Tabs dentro de la carpeta de Drawer, como esta tomando el Filesistem para construir las opciones del menu debemos de ver el nombre de la carpeta al ingresar al menu
+
+Vamos a simplicar el nombre de los directorios para que sea mas facil refactorizar, mover y hacer cambios al mover de un lado a otro, es muy comun 
+que veamos el "drawer", "tabs" y "stack" entre parentesis indicando que nos sirve para agrupar dentro del url pero eso ya lo hace opcional  
