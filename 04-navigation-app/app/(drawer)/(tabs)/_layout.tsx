@@ -9,7 +9,7 @@ const TabsLayout = () => {
      <Tabs screenOptions={{ 
         tabBarActiveTintColor: 'blue', 
         // Asi ocultamos el Header que se ve mal porque ya configuramos nosotros el Stack
-        headerShown: false,
+        // headerShown: false,
         // Aqui tenemos muchas opciones para poder personalizar a nuestro gusto
         // en este caso le cambiamos el color de fondo de la barra de Tabs
         tabBarStyle: {
@@ -24,6 +24,7 @@ const TabsLayout = () => {
         name="(stack)"
         options={{
           title: 'Stack',
+          headerShown: false, // Solo aqui no se cera el header
           tabBarIcon: ({ color }) => <FontAwesome size={28} name="apple" color={color} />,
         }}
       />

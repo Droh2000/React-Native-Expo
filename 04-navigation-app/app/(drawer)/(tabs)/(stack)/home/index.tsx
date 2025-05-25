@@ -1,10 +1,21 @@
 import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
-import { Link, router } from 'expo-router'
+import { Link, router, useNavigation } from 'expo-router'
 import CustomButton from '@/components/shared/CustomButton'
+import { DrawerActions } from '@react-navigation/native'
 
 // Despues de meter la carpeta (STACK) dentro de la carpeta TABS tenedremos que arreglar la navegacion de las pantallas internas para poder accesarlas
 const HomeScreen = () => {
+
+  // Para tener acceso al Drawer
+  const navigation = useNavigation();
+
+  // Si queremos abrir el Drawer
+  const onToggleDrawer = () => {
+    // Para abrir lo hacemos con el metodo "dispatch"
+    navigation.dispatch( DrawerActions.toggleDrawer );
+  }
+
   return (
     <SafeAreaView>
       <View className="px-10 mt-5">
@@ -38,6 +49,10 @@ const HomeScreen = () => {
         <Link href="/products" asChild>
           <CustomButton variant='text-only' className='mb-10' color='primary'>Productos</CustomButton>
         </Link>
+
+        <CustomButton
+          onPress={onToggleDrawer}
+        >Abrir Menu</CustomButton>
 
         {/*<Link className="mb-5" href="/products">
           Productos{' '}

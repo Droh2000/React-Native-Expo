@@ -12,7 +12,8 @@ const DrawerLayout = () => {
     drawerContent={ CustomDrawer }
 
     screenOptions={{
-      headerShown: false, // Ocultamos el Header que por defecto nos esta dando el Drawer (El problema es que al descativarlo nos ocultara el icono del menu)
+      // Como ya no teniamos una forma de regresarnos en la pagina, nosotros podemos controlar en que paginas mostrar el Header y cuales no
+      //headerShown: false, // Ocultamos el Header que por defecto nos esta dando el Drawer (El problema es que al descativarlo nos ocultara el icono del menu)
       overlayColor: 'rgba(0,0,0,4)', // Esto es para que cuando ingresemos al menu la parte del fondo tome este color que indiquemos
       drawerActiveTintColor: 'indigo', // El color que tendra la opcion del menu seleccionada
       headerShadowVisible: false, // Para quitar una linea que se ve arriba
@@ -38,6 +39,7 @@ const DrawerLayout = () => {
       <Drawer.Screen
         name="(tabs)" // Como dentro de la carpeta no tenemos ningun archivo Home solo especifimos el nombre no seguido del Slash
         options={{
+        headerShown: false, // Solo aqui no queremos mostrar el header, en todas las demas si
         drawerLabel: 'Tabs + Stack',
         title: 'Tabs + Stack',
           drawerIcon: ({color, size}) => (
