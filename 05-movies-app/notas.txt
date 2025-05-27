@@ -13,3 +13,12 @@ variables de entorno, para darles nombre vamos a darles:
 	* EXPO_PUBLIC (Asi le indicamos a expo que la variable sera publica, sino la llamamos asi no tendria acceso)
 Nos creamos el archivo ".env.template" para poner ahi los elementos de la variable de entorno que no queremos compartir al publico
 ademas dentro le declaramos de donde obtener la informacion que falta
+
+Separar la logica en diferentes carpetas
+	- core: Aqui vamos a colocar las acciones que son funciones escritas en TS para llamar la API, traer los datos y regresar lo que esperamos
+			dentro tenemos las acciones separadas por lugares afectados
+		- api: Aqui tenemos la instancia de axios
+				Para instalar axios:
+					- npm i axios
+				Como segundo paso despues de saber el endpoint es crear la interface.ts para obtener el autocompletado de las propiedades
+	- infraestructure: Aqui tenemos las interfaces de la respuesta de nuestro endpoint
