@@ -22,3 +22,5 @@ Separar la logica en diferentes carpetas
 					- npm i axios
 				Como segundo paso despues de saber el endpoint es crear la interface.ts para obtener el autocompletado de las propiedades
 	- infraestructure: Aqui tenemos las interfaces de la respuesta de nuestro endpoint
+						Ademas aqui nos vamos a crear la interface que verdaderamente contendra los datos como los vamos a consumir
+		- mappers: Aqui transformamos la respuesta del backend a nuestra interface con los datos que queremos 
