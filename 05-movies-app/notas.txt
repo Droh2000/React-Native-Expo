@@ -1,0 +1,9 @@
+Crear la aplicación
+	- npm create expo@latest
+
+Instalamos NativeWind (Seguimos los pasos de instalación de la pagina)
+Despues de todos los archivos y carpetas, borramos lo que no requerimos
+
+Arrancar la aplicacion
+	- npm start
+Presionamos la letra "a" para abrir el emulador de Andoroid
