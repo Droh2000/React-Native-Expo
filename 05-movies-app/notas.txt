@@ -7,3 +7,9 @@ Despues de todos los archivos y carpetas, borramos lo que no requerimos
 Arrancar la aplicacion
 	- npm start
 Presionamos la letra "a" para abrir el emulador de Andoroid
+
+Estamos consumiendo la APi de MovieDB, extraemos la Key y nos creamos el archivo donde meteremos nuestras
+variables de entorno, para darles nombre vamos a darles:
+	* EXPO_PUBLIC (Asi le indicamos a expo que la variable sera publica, sino la llamamos asi no tendria acceso)
+Nos creamos el archivo ".env.template" para poner ahi los elementos de la variable de entorno que no queremos compartir al publico
+ademas dentro le declaramos de donde obtener la informacion que falta
