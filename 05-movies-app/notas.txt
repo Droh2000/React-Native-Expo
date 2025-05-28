@@ -15,6 +15,7 @@ Nos creamos el archivo ".env.template" para poner ahi los elementos de la variab
 ademas dentro le declaramos de donde obtener la informacion que falta
 
 Separar la logica en diferentes carpetas
+	- app: Tenemos las pantalla que muestran la informacion obtenida de la API
 	- core: Aqui vamos a colocar las acciones que son funciones escritas en TS para llamar la API, traer los datos y regresar lo que esperamos
 			dentro tenemos las acciones separadas por lugares afectados
 		- api: Aqui tenemos la instancia de axios
@@ -24,3 +25,14 @@ Separar la logica en diferentes carpetas
 	- infraestructure: Aqui tenemos las interfaces de la respuesta de nuestro endpoint
 						Ademas aqui nos vamos a crear la interface que verdaderamente contendra los datos como los vamos a consumir
 		- mappers: Aqui transformamos la respuesta del backend a nuestra interface con los datos que queremos 
+	- presentation: Aqui esta todo lo relacionado a lo que ve el usuario
+
+Para hacer correctamente las peticiones HTTP
+	- Ocupamos saber el momento en el que los datos esten siendo obtenidos para indicar un mensaje de cargando
+	- Si ocurre un problema podriamos reintentarlo o saber cual fue el problema que paso
+	- Como son peticiones que solo hacemos una vez y despues solo en casos especificos volver a obtener los datos asi que requerimos manejar el cache
+		para obtener los datos mejor de ahi 
+Como hay varias cosas para una peticion HTTP podriamos pensar en usar un monton de estados basados en hook o algun gestor de estado, en este caso lo que vamos usar 
+es Tanstack Query (Si usamos muchas peticiones HTTP o cualquier tarea asyncrona es muy recomendable usar este framework), aqui seguimos la instalacion de la documentacion oficial
+este framework son de estos en los que tenemos que envolver toda la aplicacion, aplicandolo en el punto inicial de la aplicacion, esto es en el "app/_layout.tsx" porque ahi
+nos aseguramos que todas las paginas pasan por ahi
