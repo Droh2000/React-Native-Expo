@@ -2,6 +2,7 @@ import { Movie } from '@/infraestructure/interfaces/movie.interface'
 import { useRef } from 'react';
 import { View, Text, Dimensions, useWindowDimensions } from 'react-native'
 import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel';
+import MoviePoster from './MoviePoster';
 
 // Esto es lo que vamos a recibir
 interface Props {
@@ -27,7 +28,7 @@ const MainSlideShow = ({ movies }: Props) => {
             <Carousel
                 ref={ ref }
                 data={ movies } // Espera los datos de las peliculas
-                renderItem = { ({ item }) => <Text>{item.title}</Text>}    // Esta es la manera en la que queremos renderizar el elemento, dentro obtenemos los elementos que renderizara
+                renderItem = { ({ item }) => <MoviePoster id={item.id} poster={item.poster}/>}    // Esta es la manera en la que queremos renderizar el elemento, dentro obtenemos los elementos que renderizara
                 width={ 200 } // Este es el grosor de las tarjetas internas en este caso es ese numero por el ancho en cada uno de los lados
                 height={ 350 }// Este es el alto de la tarjeta
                 style={{
