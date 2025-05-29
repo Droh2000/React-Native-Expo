@@ -1,4 +1,5 @@
 import MainSlideShow from '@/presentation/components/movies/MainSlideShow';
+import MovieHorizontalList from '@/presentation/components/movies/MovieHorizontalList';
 import { useMovies } from '@/presentation/hooks/useMovies'
 import { View, Text, ActivityIndicator } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -10,7 +11,8 @@ const HomeScreen = () => {
     const safeArea = useSafeAreaInsets();
 
     // El "nowPlayingQuery" tenemos mucha informacion, cuando estamos cargando, si hay error o si se esta volviendo a cargar
-    const { nowPlayingQuery } = useMovies();
+    // Del "popularQuery" tenemos las peliculas mas populares
+    const { nowPlayingQuery, popularQuery } = useMovies();
 
     // Implementacion de Loading para no mostrar la informacion hasta que ya la tengamos
     if( nowPlayingQuery.isLoading ){
@@ -33,6 +35,14 @@ const HomeScreen = () => {
                 en ese caso mandamos un arreglo vacio
             */}            
             <MainSlideShow movies={nowPlayingQuery.data ?? []}/>
+
+            {/*
+                Aqui vamos a colocar las peliculas populares
+            */}
+            <MovieHorizontalList
+                title='Populares'
+                movies={ popularQuery.data ?? [] }
+            />
         </View>
     )
 }

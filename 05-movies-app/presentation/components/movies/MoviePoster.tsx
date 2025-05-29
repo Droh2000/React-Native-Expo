@@ -1,6 +1,6 @@
 // Vamos a crear un componente donde mostraremos en tarjeta el poster de la pelicula, este sera un componente reutilizable
+import { Image } from 'react-native';
 import { View, Text, Pressable } from 'react-native'
-import { Image } from 'react-native-reanimated/lib/typescript/Animated';
 
 // Esto es lo que va a recibir el componente
 interface Props {

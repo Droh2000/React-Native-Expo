@@ -1,4 +1,5 @@
 import { nowPlayingAction } from "@/core/actions/movies/now-playing.action";
+import { popularMoviesAction } from "@/core/actions/movies/popular.action";
 import { useQuery } from "@tanstack/react-query";
 
 // Esto esta relacionado a mostrar peliculas en plural
@@ -13,7 +14,18 @@ export const useMovies = () => {
         staleTime: 1000 * 60 * 60 * 24// El tiempo que queremos mantener los datos sin hacer peticion HTTP (Aqui son 24 hrs)
     });
 
+    // Ocupamos otro query para traer la peticion HTTP, mantener un cache de la misma y todo lo demas
+    // Cuando estemos trabajando con TransacQuery tratemos de poner querys que tengan significado
+    const popularQuery = useQuery({ 
+        queryKey: ['movies', 'popular'],
+        queryFn: popularMoviesAction,
+        staleTime: 1000 * 60 * 60 * 24
+    });
+
     return {
-        nowPlayingQuery
+        nowPlayingQuery,
+        popularQuery,
     }
 }
+// Hay que saber que tan pronto este hook se monte va a disparar inmediatamente estas peticiones HTTP, lo cual es conveniente para no usar
+// useEffects o dependencias
