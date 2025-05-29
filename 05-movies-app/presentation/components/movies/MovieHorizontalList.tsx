@@ -6,11 +6,13 @@ interface Props {
     // Como es un componente reutilizable se podra indicar cual es el titulo a mostrar
     title?: string;
     movies: Movie[];
+    className?: string; // Para poder agregarle estilos
 }
 
-const MovieHorizontalList = ({ title, movies }: Props) => {
+const MovieHorizontalList = ({ title, movies, className }: Props) => {
   return (
-    <View>
+    // Lo agregamos aqui por si en el futuro queremos expandirlo, es mas facil lograrlo aqui
+    <View className={ `${className}` }>
         {   // Consultamos si la variable tenemos el titulo para mostrarlo sino no lo mostramos
             title && 
             <Text className="text-3xl font-bold px-4 mb-2">{title}</Text>

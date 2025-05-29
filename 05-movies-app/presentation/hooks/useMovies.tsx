@@ -1,5 +1,4 @@
-import { nowPlayingAction } from "@/core/actions/movies/now-playing.action";
-import { popularMoviesAction } from "@/core/actions/movies/popular.action";
+import { nowPlayingAction, popularMoviesAction,topRatedMoviesAction, upcomingMoviesAction } from "@/core/actions/movies";
 import { useQuery } from "@tanstack/react-query";
 
 // Esto esta relacionado a mostrar peliculas en plural
@@ -22,9 +21,23 @@ export const useMovies = () => {
         staleTime: 1000 * 60 * 60 * 24
     });
 
+    const topRatedQuery = useQuery({ 
+        queryKey: ['movies', 'top_rated'],
+        queryFn: topRatedMoviesAction,
+        staleTime: 1000 * 60 * 60 * 24
+    });
+
+    const upcomingQuery = useQuery({ 
+        queryKey: ['movies', 'upcoming'],
+        queryFn: upcomingMoviesAction,
+        staleTime: 1000 * 60 * 60 * 24
+    });
+
     return {
         nowPlayingQuery,
         popularQuery,
+        topRatedQuery,
+        upcomingQuery,
     }
 }
 // Hay que saber que tan pronto este hook se monte va a disparar inmediatamente estas peticiones HTTP, lo cual es conveniente para no usar
