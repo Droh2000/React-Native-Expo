@@ -1,3 +1,4 @@
+import MainSlideShow from '@/presentation/components/MainSlideShow';
 import { useMovies } from '@/presentation/hooks/useMovies'
 import { View, Text, ActivityIndicator } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -26,8 +27,14 @@ const HomeScreen = () => {
         <View className='mt-2' style={{ paddingTop: safeArea.top }}>
             {/* Le colocamos estilo aqui por nuestra estetica de la aplicacion */}
             <Text className='text-3xl font-bold px-4 mb-2'>HomeScreen</Text>
+
+            {/* Carrusel de imagenes 
+                Espera que le pasemos el listado de peliculas este lo sacamos de los datos obtenidos del API solo que pueden ser undefined
+                en ese caso mandamos un arreglo vacio
+            */}            
+            <MainSlideShow movies={nowPlayingQuery.data ?? []}/>
         </View>
     )
 }
 
-export default HomeScreen
+export default HomeScreen;
