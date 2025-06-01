@@ -1,5 +1,5 @@
 import { nowPlayingAction, popularMoviesAction,topRatedMoviesAction, upcomingMoviesAction } from "@/core/actions/movies";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 
 // Esto esta relacionado a mostrar peliculas en plural
 // Esto es toda la logica que requerimos para almacenar en cache, guardarla y consultarla despues
@@ -21,10 +21,23 @@ export const useMovies = () => {
         staleTime: 1000 * 60 * 60 * 24
     });
 
-    const topRatedQuery = useQuery({ 
+    // Lo que nos retorna "topRatedMoviesAction" va a caer en "top_rated" y a la vez requerimos en el "queryKey" mandar la pagina en donde nos encontramos
+    // El problema esta que lo tenemos que manejar como in Infinity Scroll y el "useQuery" no nos va a funcionar para eso
+    //  const topRatedQuery = useQuery({ 
+    // Para el InfinityScroll tenemos este objeto que si cambia porque ahora nos pide nuevo argumentos
+    const topRatedQuery = useInfiniteQuery({ 
+        // Nos pide cual es la pagina inicial (La pagina que queremos establecer por defecto)
+        initialPageParam: 1,
         queryKey: ['movies', 'top_rated'],
-        queryFn: topRatedMoviesAction,
-        staleTime: 1000 * 60 * 60 * 24
+        // De esta funcion podemos sacar varios objetos, como la pagina
+        queryFn: ({ pageParam }) => {
+            return topRatedMoviesAction({ page: pageParam })
+        },
+        staleTime: 1000 * 60 * 60 * 24,
+        // Otro argumento es establecer cual es la siguiente pagina, aqui tenemos en la funcion dos argumentos que son el ultimo arreglo de las peliculas
+        // y las "pages" que es un arreglo de paginas de peliculas (Un arreglo de arrreglos)
+        // para saber cual es la siguiente pagina, tomamos los "pages" y le sumamos uno
+        getNextPageParam: ( lastPage, pages ) => pages.length + 1
     });
 
     const upcomingQuery = useQuery({ 

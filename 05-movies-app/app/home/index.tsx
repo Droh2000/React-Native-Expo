@@ -1,3 +1,4 @@
+import { Movie } from '@/infraestructure/interfaces/movie.interface';
 import MainSlideShow from '@/presentation/components/movies/MainSlideShow';
 import MovieHorizontalList from '@/presentation/components/movies/MovieHorizontalList';
 import { useMovies } from '@/presentation/hooks/useMovies'
@@ -51,8 +52,11 @@ const HomeScreen = () => {
 
                 <MovieHorizontalList
                     title='Mejor Calificadas'
-                    movies={ topRatedQuery.data ?? [] }
+                    // Esto cambio y ahora es un arreglo de arrglo, asi que de los datos tomamos la paginas y aplanamos ese arreglo
+                    movies={ topRatedQuery.data?.pages.flat() ?? [] }
                     className='mb-5'
+                    // Ocupamos mandar a llamar las siguientes peliculas (La siguiente pagina ya esta determinada por el TopRatedQuery)
+                    loadNextPage={ topRatedQuery.fetchNextPage }
                 />
 
                 <MovieHorizontalList
