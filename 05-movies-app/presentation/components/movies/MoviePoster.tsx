@@ -1,4 +1,5 @@
 // Vamos a crear un componente donde mostraremos en tarjeta el poster de la pelicula, este sera un componente reutilizable
+import { router } from 'expo-router';
 import { Image } from 'react-native';
 import { View, Text, Pressable } from 'react-native'
 
@@ -21,6 +22,8 @@ const MoviePoster = ({ id, poster, smallPoster = false, className }: Props) => {
     // Requerimos que se pueda hacer click y navegar a otra opcion (Podriamos usar Router, link o de varias formas)
     <Pressable
         className={`active:opacity-90 px-2 ${className}`}
+        // Hacemos que nos redireccione a otra pagina, en este caso usamos PUSH para poder regresar a la pagina anterior
+        onPress={ () => router.push(`/movie/${ id }`) } 
     >
         <Image
             source={{ uri: poster }}

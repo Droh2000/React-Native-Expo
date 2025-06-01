@@ -9,3 +9,11 @@ export interface Movie {
     poster: string;
     backdrop: string; // Este es un fondo que se usa en el poster
 }
+
+export interface CompleteMovie extends Movie {
+    genres: string[],
+    duration: number,
+    budget: number,
+    originalTitle: string;
+    productionCompanies: string[]
+}
