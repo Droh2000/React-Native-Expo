@@ -39,3 +39,7 @@ nos aseguramos que todas las paginas pasan por ahi
 
 Para lograr el carrusel de imagenes vamos a usar un plugin de terceros poniendo cada uno de los elementos en un FatList
 esta libreria la instalamos "react-native-reanimated-carousel"
+
+Instalamos un Gradiente para cuando la flecha en la pantalla de detalles de la peliculas este en un fondo blanco como la flecha es blanca 
+no se veria, entonces son el gradiente hacemos que si sea vea:
+	- npx expo install expo-linear-gradient

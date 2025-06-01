@@ -1,6 +1,7 @@
 import { View, Text, useWindowDimensions, Image, Pressable } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
+import { LinearGradient } from 'expo-linear-gradient';
 
 interface Props {
   // Pedimos solo la informacion que vamos a ocupar ya que no tiene sentido pedir la Movie si siempre la vamos a recibir
@@ -15,6 +16,19 @@ const MovieHeader = ({ poster, originalTitle, title }: Props) => {
 
   return (
     <>
+      {/* Gradiente */}
+      <LinearGradient
+          colors={['rbga(0,0,0, 0.3)', 'transparent']}
+          start={[0, 0]}
+          style={{
+            height: screenHeight * 0.4,
+            position: 'absolute',
+            zIndex: 1,
+            width: '100%'
+          }}
+        >
+          
+      </LinearGradient>
 
       {/* Este es un boton para poder regresarnos a la pagina anterior */}
       <View
