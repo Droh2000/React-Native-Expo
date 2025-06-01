@@ -1,4 +1,5 @@
 // Creamos la pagina para cuando hacemos click en la imagen de la pelicula nos muestre esta pagina con sus detalles
+import MovieHeader from '@/presentation/components/movie/MovieHeader';
 import { useMovie } from '@/presentation/hooks/useMovie';
 import { useLocalSearchParams } from 'expo-router';
 import { View, Text, ActivityIndicator, ScrollView } from 'react-native';
@@ -14,7 +15,7 @@ const MovieScreen = () => {
   const { movieQuery } = useMovie(+id);
 
   // Comprobamos si todavia no tenemos la pelicula cargada
-  if( movieQuery.isLoading ){
+  if( movieQuery.isLoading || !movieQuery.data){
     return (
       <View className='flex flex-1 justify-center items-center'>
         <Text className='mb-4'>Espere Por favor....</Text>
@@ -25,7 +26,11 @@ const MovieScreen = () => {
 
   return (
     <ScrollView>
-      <Text>{ movieQuery.data?.title ?? 'No Tiene Titulo' }</Text>
+      <MovieHeader
+        originalTitle={ movieQuery.data.originalTitle }
+        poster={ movieQuery.data.poster }
+        title={ movieQuery.data.title }
+      />
     </ScrollView>
   );
 }
