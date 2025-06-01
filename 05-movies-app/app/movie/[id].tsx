@@ -1,4 +1,5 @@
 // Creamos la pagina para cuando hacemos click en la imagen de la pelicula nos muestre esta pagina con sus detalles
+import MovieCast from '@/presentation/components/movie/MovieCast';
 import MovieDescription from '@/presentation/components/movie/MovieDescription';
 import MovieHeader from '@/presentation/components/movie/MovieHeader';
 import { useMovie } from '@/presentation/hooks/useMovie';
@@ -13,7 +14,7 @@ const MovieScreen = () => {
   const { id } = useLocalSearchParams();
 
   // Obtenemos para el manejo de las peticiones con TanStack
-  const { movieQuery } = useMovie(+id);
+  const { movieQuery, castQuery } = useMovie(+id);
 
   // Comprobamos si todavia no tenemos la pelicula cargada
   if( movieQuery.isLoading || !movieQuery.data){
@@ -35,6 +36,10 @@ const MovieScreen = () => {
 
       <MovieDescription
         movie={ movieQuery.data }
+      />
+
+      <MovieCast
+        cast={ castQuery.data ?? [] }
       />
     </ScrollView>
   );

@@ -2,6 +2,7 @@
 // Se consumieron datos que ya teniamos cargados previamente
 
 import { getMovieByIdAction } from "@/core/actions/movie/get-movie-by-id.action";
+import { getMovieCastAction } from "@/core/actions/movie/get-movie-cast.action";
 import { useQuery } from "@tanstack/react-query"
 
 // Asi que nos creamos este Hook para administrar la parte de TansTack
@@ -15,7 +16,14 @@ export const useMovie = (id: number) => {
     staleTime: 1000 * 60 * 60 * 24
   });
 
+  const castQuery = useQuery({
+    queryKey: ['movie', id, 'cast'],
+    queryFn: () => getMovieCastAction(id),
+    staleTime: 1000 * 60 * 60 * 24,
+  });
+
   return {
     movieQuery,
+    castQuery,
   };
 }
