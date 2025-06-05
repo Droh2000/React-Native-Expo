@@ -1,3 +1,18 @@
 Aqui vamos a usar lo que Expo nos crea por nosotros como son:
     - La definicion de los colores para cambiar entre tema Dark o Light
-    - 
+    - En esta parte de NeativWinds para usar los  estilos con ClassName
+        seguimos los pasos con: https://www.nativewind.dev/docs/getting-started/installation
+
+Para que ejecute el proyecto limpiando el cache anterior:
+    - npm start -c
+Remplazamos algunos archivos que nos pasaron del curso
+
+Forma de manejar los temas
+    Tenemos dos formas, una es usando el nativewind y otro es utilizando el Hook "useThemeColor" el cual es conveniente
+    porque no tenemos que importar nada mas (Esto viene por defecto gracias a Expo)
+    Al usar la parte de NativeWind nos facilita el uso
+    Lo que pasa es que si tenemos el tema manejado por Nativiwind y tambien con el Hook "useThemeColor", cuando cambiemos de tema
+    no ocurre el cambio a la misma velocidad, Aqui lo vamos a usar de las dos maneras pero en la Realidad podemos elegir entre uno 
+    de los dos
+
+

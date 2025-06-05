@@ -5,6 +5,9 @@ import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 // Este componente viene de una carpeta de nuestro proyecto
 import { useColorScheme } from '@/hooks/useColorScheme';
+// En la documenacion oficial viene con un ./ pero eso nos dara error y le tenemos que agregar ../
+import "../global.css";
+import { Text, View } from 'react-native';
 
 // Usuamente vamos a querer estas funcionales y mantenerlas 
 export default function RootLayout() {
@@ -24,10 +27,18 @@ export default function RootLayout() {
     // Aqui detecta el tema del OS, si es oscuro usa el objeto "DarkTheme" (Esto nos coloca cierta configuracion por defecto)
     // El "DefaultTheme" toma el tema por defecto de RectNative
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
+      {/* Usamos el color de fondo de acuerdo al tema 
+        Definimos primero TEMA Light y luego si fuera Oscuro
+      */}
+      <View className='bg-light-background dark:bg-dark-background'>
+        <Text 
+          // Ejemplo del uso de los Colores que definimos en la configuracion de "tailwind.config.js"
+          // "text-Nombre(LIGHT)Propiedad TEMA:text-Nombre(DARK)Propiedad"
+          className='mt-10 text-3xl text-light-primary dark:text-dark-primary'
+        >Hola Mundo</Text>
+      </View>
+      {/*<Stack>
+      </Stack>*/}
       <StatusBar style="auto" />
     </ThemeProvider>
   );
