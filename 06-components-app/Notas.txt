@@ -1,0 +1,3 @@
+Aqui vamos a usar lo que Expo nos crea por nosotros como son:
+    - La definicion de los colores para cambiar entre tema Dark o Light
+    - 
