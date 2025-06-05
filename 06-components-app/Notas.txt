@@ -15,4 +15,6 @@ Forma de manejar los temas
     no ocurre el cambio a la misma velocidad, Aqui lo vamos a usar de las dos maneras pero en la Realidad podemos elegir entre uno 
     de los dos
 
-
+Es mucho trabajo estar colocando en cada "className" o estar llamando el hook para colocar el color en los componentes
+ademas que asi en cualquier cambio tenemos que modificar en muchos lugares, asi que nos vamos a crear unos componentes personalizados par
+manejar los textos y el fondo y asi vamos a ir con cada componente que nosotros sepamos que vamos a reutilizar
