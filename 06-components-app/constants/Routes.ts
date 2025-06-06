@@ -1,4 +1,5 @@
 // Estas son las rutas que vamos a usar en la aplicacion
+// Es conveniente colocarle un tipado extricto para que cada propiedad del objeto se respete lo que se espera
 export const menuRoutes = [
   {
     title: 'Pull to refresh',

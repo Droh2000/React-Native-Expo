@@ -18,3 +18,6 @@ Forma de manejar los temas
 Es mucho trabajo estar colocando en cada "className" o estar llamando el hook para colocar el color en los componentes
 ademas que asi en cualquier cambio tenemos que modificar en muchos lugares, asi que nos vamos a crear unos componentes personalizados par
 manejar los textos y el fondo y asi vamos a ir con cada componente que nosotros sepamos que vamos a reutilizar
+
+Cada uno de los directorios que estan dentro de "app" contienen la pagina que queremos mostrar, ya anteriormente en la carpeta de "counstant" tenemos
+en el archivo de "Routes" las rutas definidas de estas paginas

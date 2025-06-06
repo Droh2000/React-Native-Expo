@@ -12,6 +12,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useThemeColor } from '@/hooks/useThemeColor';
 import ThemedView from '@/presentation/shared/ThemedView';
 import ThemedText from '@/presentation/shared/ThemedText';
+import { allRoutes } from '@/constants/Routes';
 
 // Usuamente vamos a querer estas funcionales y mantenerlas 
 export default function RootLayout() {
@@ -47,12 +48,51 @@ export default function RootLayout() {
             Definimos primero TEMA Light y luego si fuera Oscuro
             Aqui usamos nuestro componente personalizado ya con los Temas configurados, si queremos usar otro View solo llamamos este componente
             o en el caso de Text uamos el componente ThemedText (AQui tenemos todo el comportamiento del Text adaptado siempre al tema light o Dark)
-        */}
         <ThemedView margin>
           <ThemedText type='semi-bold' className='mt-20'>Hola Mundo</ThemedText>
         </ThemedView>
-        {/*<Stack>
-        </Stack>*/}
+        */}
+        {/* Definicion de la Navegacion hacia cada una de las rutas en la carpeta "app" 
+            Aqui en el Stack definimos el Header y color acorde, ademas aqui definimos los cambios 
+            que queremos aplicarle a todas las pantallas
+        */}
+        <Stack
+          screenOptions={{
+            headerShadowVisible: false, // Para que no se muestre una linea que sale debajo del header
+            // Para que tome el color del Tema Claro u Oscuro
+            contentStyle: {
+              backgroundColor: backgroundColor
+            },
+            headerStyle: {
+              backgroundColor: backgroundColor
+            }
+          }}
+        >
+          {/*
+              Esta es la primera pantalla que vamos a mostrar que esta dentro de la carpeta "app"
+          */}
+          <Stack.Screen
+            name='index'
+            // Opciones que puede tener por cada pantalla
+            options={{
+              title: '',
+            }}
+          />
+          {/* Queremos iterar cada una de las pantallas que tenemos definidas en las constantes del archivo "Route.ts"
+              al final tenemos "allRoutes"
+          */}
+          {
+            allRoutes.map((route) => (
+              <Stack.Screen
+                key={route.name}
+                name={route.name}
+                options={{
+                  title: route.title
+                }}
+              />
+            ))
+          }
+        </Stack>
         <StatusBar style="auto" />
       </ThemeProvider>
     </GestureHandlerRootView>
