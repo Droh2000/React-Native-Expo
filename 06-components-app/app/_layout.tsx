@@ -11,6 +11,7 @@ import { Text, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useThemeColor } from '@/hooks/useThemeColor';
 import ThemedView from '@/presentation/shared/ThemedView';
+import ThemedText from '@/presentation/shared/ThemedText';
 
 // Usuamente vamos a querer estas funcionales y mantenerlas 
 export default function RootLayout() {
@@ -44,15 +45,11 @@ export default function RootLayout() {
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         {/* Usamos el color de fondo de acuerdo al tema 
             Definimos primero TEMA Light y luego si fuera Oscuro
-            Aqui usamos nuestro componente personalizado ya con los Temas configurados, ski queremos usar otro View solo llamamos este componente
-            
+            Aqui usamos nuestro componente personalizado ya con los Temas configurados, si queremos usar otro View solo llamamos este componente
+            o en el caso de Text uamos el componente ThemedText (AQui tenemos todo el comportamiento del Text adaptado siempre al tema light o Dark)
         */}
-        <ThemedView>
-          <Text 
-            // Ejemplo del uso de los Colores que definimos en la configuracion de "tailwind.config.js"
-            // "text-Nombre(LIGHT)Propiedad TEMA:text-Nombre(DARK)Propiedad"
-            className='mt-10 text-3xl text-light-primary dark:text-dark-primary'
-          >Hola Mundo</Text>
+        <ThemedView margin>
+          <ThemedText type='semi-bold' className='mt-20'>Hola Mundo</ThemedText>
         </ThemedView>
         {/*<Stack>
         </Stack>*/}
