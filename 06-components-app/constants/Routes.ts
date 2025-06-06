@@ -1,6 +1,16 @@
 // Estas son las rutas que vamos a usar en la aplicacion
 // Es conveniente colocarle un tipado extricto para que cada propiedad del objeto se respete lo que se espera
-export const menuRoutes = [
+
+import { Ionicons } from "@expo/vector-icons";
+
+// Asi le agregamos el tipado a nuestro objeto de rutas y principalmente a la parte de los Iconos le agregarmos un tipado de los iconos de Ionic
+interface MenuRoute {
+  title: string,
+  icon: keyof typeof Ionicons.glyphMap,
+  name: string,
+}
+
+export const menuRoutes: MenuRoute[] = [
   {
     title: 'Pull to refresh',
     icon: 'refresh-outline',
@@ -33,7 +43,7 @@ export const menuRoutes = [
   },
 ];
 
-export const uiMenuRoutes = [
+export const uiMenuRoutes: MenuRoute[] = [
   {
     title: 'Switches',
     icon: 'toggle-outline',
@@ -51,7 +61,7 @@ export const uiMenuRoutes = [
   },
 ];
 
-export const animationMenuRoutes = [
+export const animationMenuRoutes: MenuRoute[] = [
   {
     title: 'Animation 101',
     icon: 'cube-outline',
@@ -64,7 +74,7 @@ export const animationMenuRoutes = [
   },
 ];
 
-export const allRoutes = [
+export const allRoutes: MenuRoute[] = [
   ...menuRoutes,
   ...uiMenuRoutes,
   ...animationMenuRoutes,
