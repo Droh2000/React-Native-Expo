@@ -21,3 +21,6 @@ manejar los textos y el fondo y asi vamos a ir con cada componente que nosotros 
 
 Cada uno de los directorios que estan dentro de "app" contienen la pagina que queremos mostrar, ya anteriormente en la carpeta de "counstant" tenemos
 en el archivo de "Routes" las rutas definidas de estas paginas
+
+Si queremos aplicar animaciones sobre otros elementos, no seria conveniente copiar y pegar la misma logica para cada uno de los elementos
+asi que vamos a extraer la logica en un CustomHook que nos permita reutilizar toda la logica de la animacion
