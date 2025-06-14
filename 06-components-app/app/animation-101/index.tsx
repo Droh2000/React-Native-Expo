@@ -1,10 +1,21 @@
-import { View, Text } from 'react-native';
+import ThemedButtom from '@/presentation/shared/ThemedButtom';
+import ThemedView from '@/presentation/shared/ThemedView';
 
-const Animation101Screen = () => {
+const Animationsw101Screen = () => {
   return (
-    <View>
-      <Text>Animation101Screen</Text>
-    </View>
+    <ThemedView margin>
+
+      {/* Botones personalizados que nosotros creamos para mostrar las animaciones */}
+      <ThemedButtom 
+          className='mb-5' 
+          onPress={() => console.log('FadeIn')}
+      >FadeIn</ThemedButtom>
+      
+      <ThemedButtom
+        className='mb-5'
+        onPress={() => console.log('FadeIn')}
+      >FadeOut</ThemedButtom>
+    </ThemedView>
   );
 };
-export default Animation101Screen;
+export default Animationsw101Screen;
