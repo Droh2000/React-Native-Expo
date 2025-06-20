@@ -1,7 +1,8 @@
 import ThemedText from '@/presentation/shared/ThemedText';
 import ThemedView from '@/presentation/shared/ThemedView';
-import { FlatList, Image } from 'react-native';
+import { ActivityIndicator, FlatList, Image, View } from 'react-native';
 import { useState } from 'react';
+import { useThemeColor } from '@/hooks/useThemeColor';
 
 // Elementos que queremos mostrar en el Scroll
 interface ListItemProps {
@@ -25,6 +26,9 @@ const InfiniteScrollScreen = () => {
   // Con el Hook es como vamos a renderizar los datos
   const [numbers, setNumbers] = useState([0,1,2,3,4,5]);
   
+  // Vamos a cambiar el color del Loading que sale en Andorid
+  const primaryColor = useThemeColor({}, 'primary');
+
   // Con esta funcion vamos a ir creando dinamicamente mas elementos en el arreglo
   const loadMore = () => {
     // Este nos va a estar obteniendo nuevo elementos sumando el valor desde el ultimo valor del arreglo
@@ -54,6 +58,12 @@ const InfiniteScrollScreen = () => {
         // La idea del infiniteScroll es que cargemos elementos cuando se llega al final pero nosotros no queremos que el usuario llegue al final del listado
         // para que empieze a cargar los elementos, lo mejor es cuando el usuario este cerca de llegar al final pero no al mero final
         onEndReachedThreshold={ 0.6 } // Cuando este el 60% del Scroll empeize a cargar los siguientes elementos
+        // Indicamos a los usuarios que estamos cargando mas datos
+        ListFooterComponent={ () => (
+          <View style={{ height: 150, justifyContent: 'center' }}>
+            <ActivityIndicator size={40} color={primaryColor}/>
+          </View>
+        )}
       />
     </ThemedView>
   );
