@@ -8,24 +8,15 @@ import { Platform } from 'react-native'
 
 const ModalScreen = () => {
   return (
-    // Le cambiamos el color al modal para que se note
-    <ThemedView className="justify-center items-center flex-1" bgColor="#A52182">
-      <ThemedText>Hola, Soy un Modal</ThemedText>
-        
-      {/* Si queremos lanzar otro modal despues de haber lanzando el primero */}
-      <ThemedButtom
-        className='my-4'
-        onPress={ () => router.push('./modal/modal-window-2') }
-      >
-        Otro Modal
-      </ThemedButtom>
+    <ThemedView className="justify-center items-center flex-1">
+      <ThemedText>Hola, Soy Otro Modal</ThemedText>
 
       <ThemedButtom
+        // Con "dismiss" estariamos cerrando el modals
         onPress={ () => router.dismiss() }
       >Cerrar</ThemedButtom>
-
+      
       <StatusBar
-        // Cambiar el color del StatusBar
         style={ Platform.OS === 'ios' ? 'light' : 'auto' }
       />
     </ThemedView>
