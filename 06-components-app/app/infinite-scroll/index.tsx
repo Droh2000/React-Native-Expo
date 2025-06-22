@@ -3,6 +3,7 @@ import ThemedView from '@/presentation/shared/ThemedView';
 import { ActivityIndicator, FlatList, Image, View } from 'react-native';
 import { useState } from 'react';
 import { useThemeColor } from '@/hooks/useThemeColor';
+import FadeInImage from '@/presentation/images/FadeInImage';
 
 // Elementos que queremos mostrar en el Scroll
 interface ListItemProps {
@@ -11,11 +12,18 @@ interface ListItemProps {
 
 const ListItem = ({ number }: ListItemProps) => {
   return (
-    <Image
+    /*<Image
       source={{ uri: `https://picsum.photos/id/${ number }/500/400` }}
       style={{
         height: 400,
         width: "100%"
+      }}
+    />*/
+    <FadeInImage
+      uri={`https://picsum.photos/id/${ number }/500/400`}
+      style={{
+        height: 400,
+        width: '100%'
       }}
     />
   )
