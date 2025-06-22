@@ -2,7 +2,7 @@
 // las preferencias en algun lugar para que se mantengan las configuraciones que el usuario establecio
 // Debemos de crearnos algun contexto global que nos permita determinar cual es el tema sin teenr que entrar a la seccion y cambiarlo
 import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native";
-import { createContext, PropsWithChildren, useContext } from "react";
+import { createContext, PropsWithChildren, useContext, useState } from "react";
 import { colorScheme, useColorScheme } from 'nativewind';
 
 // Estas son las propiedades que requerimos en el contexto
@@ -30,7 +30,15 @@ export const useThemeChangercontext = () => {
 // Con este PropsWithChildren obtenemos automaticamanete el Childrent para no definirlo
 export const ThemeChangerProvider = ({ children }: PropsWithChildren) => {
 
-    const { colorScheme } = useColorScheme();
+    const { colorScheme, setColorScheme } = useColorScheme();
+
+    // Aqui determinamos cual es el Tema que esta activo
+    const [isDarkMode, setIsDarkMode] = useState( colorScheme === 'dark' );
+    const [isSystemThemeEnable, setisSystemThemeEnable] = useState(true); // Por defecto esta es la funcionalidad que viene en la aplcacion
+    const currentTheme = isSystemThemeEnable
+            ? colorScheme // Significa que quiere usar el tema que viene en el OS
+            : (isDarkMode) ? 'dark' : 'light'; // Evaluamos cual es el color que la persona selecciono
+
 
     // Retornamos el nuevo provider
     return (
@@ -38,14 +46,19 @@ export const ThemeChangerProvider = ({ children }: PropsWithChildren) => {
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
             <ThemeChangerContext.Provider
                 value={{
-                    currentTheme: 'light',
-                    isSystemTheme: false,
+                    currentTheme: currentTheme ?? 'light',
+                    isSystemTheme: isSystemThemeEnable,
                     // Las funciones son asyncronas porque guardaran en el storage
                     toggleTheme: async ()=>{
-
+                        setIsDarkMode(!isDarkMode);
+                        setColorScheme( isDarkMode ? 'light' : 'dark' );
+                        setisSystemThemeEnable(false);
+                        
+                        // Guardar en el dispositivo fisico del dispositivos para perservar la configuracion
                     },
                     setSystemTheme: async()=>{
-
+                        setisSystemThemeEnable(true);
+                        setColorScheme('system');
                     }
                 }}  
             >
