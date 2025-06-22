@@ -54,7 +54,5 @@ const ThemesScreen = () => {
       </ThemedCard>
     </ThemedView>
   );
-  // En este punto si salimos de la aplicacion y volvemos a entrar no se guardaran los cambios que pusimos, tenemos que almacenar
-  // las preferencias en algun lugar para que se mantengan las configuraciones que el usuario establecio
 };
 export default ThemesScreen;

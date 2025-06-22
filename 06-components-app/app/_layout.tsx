@@ -13,6 +13,7 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 import ThemedView from '@/presentation/shared/ThemedView';
 import ThemedText from '@/presentation/shared/ThemedText';
 import { allRoutes } from '@/constants/Routes';
+import { ThemeChangerProvider } from '@/presentation/context/ThemeChangerContext';
 
 // Usuamente vamos a querer estas funcionales y mantenerlas 
 export default function RootLayout() {
@@ -40,10 +41,13 @@ export default function RootLayout() {
   return (
     // Con este nos aseguramos evitar unos problemas con los Scroll
     // Ademas le asignamos el color de fondo de la aplicacion segun el tema del dispositivo
+    // En este punto ocupamos manejar el "background" "GestureHandlerRootView" porque cuando la aplicacion cargue usara este tema que esta basado
+    // en el "useThemeColor", en lugar de usar ese Hook deberiamos determinar mediante el ThemeChangerProvider
     <GestureHandlerRootView style={{ backgroundColor: backgroundColor, flex: 1 }}>
+      <ThemeChangerProvider>
       {/* Aqui detecta el tema del OS, si es oscuro usa el objeto "DarkTheme" (Esto nos coloca cierta configuracion por defecto)
         El "DefaultTheme" toma el tema por defecto de RectNative*/}
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      {/*<ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>*/}
         {/* Usamos el color de fondo de acuerdo al tema 
             Definimos primero TEMA Light y luego si fuera Oscuro
             Aqui usamos nuestro componente personalizado ya con los Temas configurados, si queremos usar otro View solo llamamos este componente
@@ -96,7 +100,8 @@ export default function RootLayout() {
           }
         </Stack>
         <StatusBar style="auto" />
-      </ThemeProvider>
+      {/*</ThemeProvider>*/}
+      </ThemeChangerProvider>
     </GestureHandlerRootView>
   );
 }
