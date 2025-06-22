@@ -87,7 +87,9 @@ export default function RootLayout() {
                 key={route.name}
                 name={route.name}
                 options={{
-                  title: route.title
+                  title: route.title,
+                  // Ocultar el Header en el apartado de los Slides porque ahi esta una flecha para regresarse
+                  headerShown: !route.title.includes('Slides'),
                 }}
               />
             ))
